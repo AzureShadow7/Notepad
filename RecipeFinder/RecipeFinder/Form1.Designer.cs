@@ -59,7 +59,7 @@
             this.recipeDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.recipeDataGridView.Location = new System.Drawing.Point(709, 106);
             this.recipeDataGridView.Name = "recipeDataGridView";
-            this.recipeDataGridView.Size = new System.Drawing.Size(610, 783);
+            this.recipeDataGridView.Size = new System.Drawing.Size(940, 783);
             this.recipeDataGridView.TabIndex = 1;
             // 
             // questionLabel
@@ -150,6 +150,7 @@
             // searchButton
             // 
             this.searchButton.BackColor = System.Drawing.Color.Chocolate;
+            this.searchButton.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.searchButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Sienna;
             this.searchButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightSalmon;
             this.searchButton.ForeColor = System.Drawing.Color.Snow;
@@ -166,7 +167,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(14F, 27F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Bisque;
-            this.ClientSize = new System.Drawing.Size(1385, 935);
+            this.ClientSize = new System.Drawing.Size(1661, 935);
             this.Controls.Add(this.searchButton);
             this.Controls.Add(this.prepTimeComboBox);
             this.Controls.Add(this.prepTimeLabel);

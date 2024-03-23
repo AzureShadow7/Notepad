@@ -7,11 +7,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data.SqlClient;
 
 namespace RecipeFinder
 {
     public partial class RecipeFinder : Form
     {
+        string connectionString = @"Data Source=NGOZIS-PC77;Initial Catalog=test;Integrated Security=True;Encrypt=False";
+
         public RecipeFinder()
         {
             InitializeComponent();
@@ -29,7 +32,15 @@ namespace RecipeFinder
 
         private void searchButton_Click(object sender, EventArgs e)
         {
+            using (SqlConnection sqlConnection = new SqlConnection(connectionString))
+            {
+                sqlConnection.Open();
+                SqlDataAdapter sqlDataAdapter = new SqlDataAdapter("SELECT * from dbo.mealTable", sqlConnection);
+                DataTable dataTable1 = new DataTable();
+                sqlDataAdapter.Fill(dataTable1);
 
+                recipeDataGridView.DataSource = dataTable1;
+            }
         }
     }
 }
