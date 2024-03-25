@@ -39,6 +39,7 @@
             this.prepTimeLabel = new System.Windows.Forms.Label();
             this.prepTimeComboBox = new System.Windows.Forms.ComboBox();
             this.searchButton = new System.Windows.Forms.Button();
+            this.recipeDisplayBox = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.recipeDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -57,9 +58,9 @@
             // 
             this.recipeDataGridView.BackgroundColor = System.Drawing.Color.Bisque;
             this.recipeDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.recipeDataGridView.Location = new System.Drawing.Point(709, 106);
+            this.recipeDataGridView.Location = new System.Drawing.Point(794, 106);
             this.recipeDataGridView.Name = "recipeDataGridView";
-            this.recipeDataGridView.Size = new System.Drawing.Size(940, 783);
+            this.recipeDataGridView.Size = new System.Drawing.Size(855, 783);
             this.recipeDataGridView.TabIndex = 1;
             // 
             // questionLabel
@@ -82,7 +83,6 @@
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(466, 34);
             this.textBox1.TabIndex = 3;
-            this.textBox1.Text = "write ingredient here";
             this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // specificationLabel
@@ -162,12 +162,21 @@
             this.searchButton.UseVisualStyleBackColor = false;
             this.searchButton.Click += new System.EventHandler(this.searchButton_Click);
             // 
+            // recipeDisplayBox
+            // 
+            this.recipeDisplayBox.Location = new System.Drawing.Point(127, 865);
+            this.recipeDisplayBox.Multiline = true;
+            this.recipeDisplayBox.Name = "recipeDisplayBox";
+            this.recipeDisplayBox.Size = new System.Drawing.Size(369, 58);
+            this.recipeDisplayBox.TabIndex = 11;
+            // 
             // RecipeFinder
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(14F, 27F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Bisque;
             this.ClientSize = new System.Drawing.Size(1661, 935);
+            this.Controls.Add(this.recipeDisplayBox);
             this.Controls.Add(this.searchButton);
             this.Controls.Add(this.prepTimeComboBox);
             this.Controls.Add(this.prepTimeLabel);
@@ -202,6 +211,7 @@
         private System.Windows.Forms.Label prepTimeLabel;
         private System.Windows.Forms.ComboBox prepTimeComboBox;
         private System.Windows.Forms.Button searchButton;
+        private System.Windows.Forms.TextBox recipeDisplayBox;
     }
 }
 
