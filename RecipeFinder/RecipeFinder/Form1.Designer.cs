@@ -115,6 +115,7 @@
             this.cookingTimeComboBox.Name = "cookingTimeComboBox";
             this.cookingTimeComboBox.Size = new System.Drawing.Size(269, 35);
             this.cookingTimeComboBox.TabIndex = 6;
+            //this.cookingTimeComboBox.SelectedIndexChanged += new System.EventHandler(this.cookingTimeComboBox_SelectedIndexChanged);
             // 
             // cookingTimelLabel
             // 
@@ -137,7 +138,6 @@
             this.prepTimeLabel.Size = new System.Drawing.Size(337, 41);
             this.prepTimeLabel.TabIndex = 8;
             this.prepTimeLabel.Text = "Preparation Time";
-            this.prepTimeLabel.Click += new System.EventHandler(this.prepTimeLabel_Click);
             // 
             // prepTimeComboBox
             // 

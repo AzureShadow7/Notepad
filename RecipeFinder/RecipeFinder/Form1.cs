@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using System.Diagnostics;
 
 namespace RecipeFinder
 {
@@ -20,14 +21,45 @@ namespace RecipeFinder
         public RecipeFinder()
         {
             InitializeComponent();
+            FillComboBox();
+        }
+
+        private void FillComboBox()
+        {
+            using (SqlConnection sqlConnection = new SqlConnection(connectionString))
+            {
+                if(sqlConnection.State == ConnectionState.Closed)
+                {
+                    sqlConnection.Open();
+                }
+
+                command = new SqlCommand("SELECT * FROM dbo.mealTable", sqlConnection);
+
+                dataReader = command.ExecuteReader();
+
+                while(dataReader.Read())
+                {
+                    string cookingTime = dataReader["cookTime"].ToString();
+                    cookingTimeComboBox.Items.Add(cookingTime);
+                }
+
+                //for(int i = 0; i < cookingTimeComboBox.Items.Count; i++)
+                //{
+                //    for (int j = 0; j < cookingTimeComboBox.Items.Count; j++)
+                //    {
+                //        if ((cookingTimeComboBox.SelectedIndex = i) == (cookingTimeComboBox.SelectedIndex = i))
+                //        {
+                //            MessageBox.Show("Duplicate found");
+                //        }
+                //    }
+                        
+                //}
+            }
+
+
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void prepTimeLabel_Click(object sender, EventArgs e)
         {
 
         }
@@ -70,5 +102,6 @@ namespace RecipeFinder
             }
             
         }
+        
     }
 }
