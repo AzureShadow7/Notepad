@@ -17,14 +17,16 @@ namespace RecipeFinder
         string connectionString = @"Data Source=NGOZIS-PC77;Initial Catalog=test;Integrated Security=True;Encrypt=False";
         SqlCommand command;
         SqlDataReader dataReader;
+        List<string> altCookingTimeList = new List<string>();
 
         public RecipeFinder()
         {
             InitializeComponent();
-            FillComboBox();
+            FillCookingTimeComboBox();
+            FillPrepTimeComboBox();
         }
 
-        private void FillComboBox()
+        private void FillCookingTimeComboBox()
         {
             using (SqlConnection sqlConnection = new SqlConnection(connectionString))
             {
@@ -33,7 +35,7 @@ namespace RecipeFinder
                     sqlConnection.Open();
                 }
 
-                command = new SqlCommand("SELECT * FROM dbo.mealTable", sqlConnection);
+                command = new SqlCommand("SELECT distinct cookTime from dbo.mealTable", sqlConnection);
 
                 dataReader = command.ExecuteReader();
 
@@ -43,20 +45,31 @@ namespace RecipeFinder
                     cookingTimeComboBox.Items.Add(cookingTime);
                 }
 
-                //for(int i = 0; i < cookingTimeComboBox.Items.Count; i++)
-                //{
-                //    for (int j = 0; j < cookingTimeComboBox.Items.Count; j++)
-                //    {
-                //        if ((cookingTimeComboBox.SelectedIndex = i) == (cookingTimeComboBox.SelectedIndex = i))
-                //        {
-                //            MessageBox.Show("Duplicate found");
-                //        }
-                //    }
-                        
-                //}
+                sqlConnection.Close();
             }
+        }
 
+        private void FillPrepTimeComboBox()
+        {
+            using (SqlConnection sqlConnection = new SqlConnection(connectionString))
+            {
+                if (sqlConnection.State == ConnectionState.Closed)
+                {
+                    sqlConnection.Open();
+                }
 
+                command = new SqlCommand("SELECT distinct prepTime from dbo.mealTable", sqlConnection);
+
+                dataReader = command.ExecuteReader();
+
+                while (dataReader.Read())
+                {
+                    string cookingTime = dataReader["prepTime"].ToString();
+                    prepTimeComboBox.Items.Add(cookingTime);
+                }
+
+                sqlConnection.Close();
+            }
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
