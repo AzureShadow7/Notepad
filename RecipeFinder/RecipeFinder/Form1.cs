@@ -86,32 +86,16 @@ namespace RecipeFinder
                     sqlConnection.Open();
                 }
 
-                //command = new SqlCommand("SELECT * FROM dbo.mealTable WHERE mainIngredient = @param1 and prepTime = '" + prepTimeComboBox.SelectedItem.ToString()
-                //    + "' cookTime = '" + cookingTimeComboBox.SelectedItem.ToString() + "'", sqlConnection);
+                string query = "SELECT mealId, mealName, mainIngredient, secondaryIngredient, vegetarian, prepTime, cookTime FROM dbo.mealTable where mainIngredient LIKE '"
+                    + textBox1.Text + "%'" + "and prepTime ='" + prepTimeComboBox.SelectedItem.ToString() + "' and cookTime ='" + cookingTimeComboBox.SelectedItem.ToString() + "'";
 
+                SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(query, sqlConnection);
+                DataTable dataTable1 = new DataTable();
+                sqlDataAdapter.Fill(dataTable1);
 
-                command = new SqlCommand("SELECT * FROM dbo.mealTable WHERE mainIngredient = @param1", sqlConnection);
-                command.Parameters.AddWithValue("@param1", textBox1.Text);
+                recipeDataGridView.DataSource = dataTable1;
 
-                dataReader = command.ExecuteReader();
-
-                if (dataReader.Read())
-                {
-                    recipeDisplayBox.Text = dataReader["mealName"].ToString();
-                }
-                else
-                {
-                    MessageBox.Show("No data for this ingredient");
-                }
                 sqlConnection.Close();
-
-                //SqlDataAdapter sqlDataAdapter = new SqlDataAdapter("SELECT * FROM dbo.mealTable WHERE mainIngredient LIKE'" + textBox1.Text + "%'", sqlConnection);
-                //DataTable dataTable1 = new DataTable();
-                //sqlDataAdapter.Fill(dataTable1);
-
-                //recipeDataGridView.DataSource = dataTable1;
-
-                //sqlConnection.Close();
             }
             
         }
