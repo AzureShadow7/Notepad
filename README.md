@@ -28,5 +28,16 @@ This program allowed me to create a server for the database and create a table c
 
 Once the table was created with the right parameters it was filled with sample data that would be used for testing.
 
-I later connected the server containing the database to the visual studio project allowing the project to acces the database. Once that was done, the next step was to start programming. The first thing I did was what I proposed was the easiest step which was to have the button clicked and the data displayed on the datagridviewer. After that step was completed the next step was to filter out the data using the main ingredient. The text box was used for this section. The text box as previously mentioned was to allow the user to type in the main ingredient, upon typing the main ingredient and then clicking the search button, the data grid viewer was to show only the data in the table that had the ingredients inputted as their main ingredient.
+I later connected the server containing the database to the visual studio project allowing the project to acces the database. Once that was done, the next step was to start programming. The first thing I did was what I proposed was the easiest step which was to have the button clicked and the data displayed on the datagridviewer.
+![Screenshot 2024-04-04 014112](https://github.com/AzureShadow7/Recipe-Finder/assets/106389001/d273aa4f-da56-45a1-afbf-19446136e382)
+After that step was completed the next step was to filter out the data using the main ingredient. The text box was used for this section. The text box as previously mentioned was to allow the user to type in the main ingredient, upon typing the main ingredient and then clicking the search button, the data grid viewer was to show only the data in the table that had the ingredients inputted as their main ingredient.
+
 This step allowed a more limited choice of meal but another thing to consider was the time of the user, does the user have the time to make the meals that have been listed and assuming the data in the table was much bigger there would be an overwhelming amount of data to sift through trying to find the recipe the user wants so the need for further filtration was found. Using the data from cooking and prep time, the numbers where added to the drop list of elements contained in the comboboxes.
+![Screenshot 2024-04-04 014027](https://github.com/AzureShadow7/Recipe-Finder/assets/106389001/f7fad1eb-88d2-471f-81a7-1506122674dd)
+
+The same was also done for the prep time combo box. After the elements of the data was added to the combo box for filter the next step was to make all the data work together to filter the table and produce the result.
+![Screenshot 2024-04-04 014007](https://github.com/AzureShadow7/Recipe-Finder/assets/106389001/ef93e365-e0af-4b6b-b1ba-c0dc33154f1e)
+
+
+The result was:
+![image](https://github.com/AzureShadow7/Recipe-Finder/assets/106389001/7fc60cac-502c-40df-b7ba-40fa701eda46)
