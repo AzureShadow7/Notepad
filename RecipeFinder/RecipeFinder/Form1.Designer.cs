@@ -39,7 +39,6 @@
             this.prepTimeLabel = new System.Windows.Forms.Label();
             this.prepTimeComboBox = new System.Windows.Forms.ComboBox();
             this.searchButton = new System.Windows.Forms.Button();
-            this.recipeDisplayBox = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.recipeDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -115,7 +114,6 @@
             this.cookingTimeComboBox.Name = "cookingTimeComboBox";
             this.cookingTimeComboBox.Size = new System.Drawing.Size(269, 35);
             this.cookingTimeComboBox.TabIndex = 6;
-            //this.cookingTimeComboBox.SelectedIndexChanged += new System.EventHandler(this.cookingTimeComboBox_SelectedIndexChanged);
             // 
             // cookingTimelLabel
             // 
@@ -162,21 +160,12 @@
             this.searchButton.UseVisualStyleBackColor = false;
             this.searchButton.Click += new System.EventHandler(this.searchButton_Click);
             // 
-            // recipeDisplayBox
-            // 
-            this.recipeDisplayBox.Location = new System.Drawing.Point(127, 865);
-            this.recipeDisplayBox.Multiline = true;
-            this.recipeDisplayBox.Name = "recipeDisplayBox";
-            this.recipeDisplayBox.Size = new System.Drawing.Size(369, 58);
-            this.recipeDisplayBox.TabIndex = 11;
-            // 
             // RecipeFinder
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(14F, 27F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Bisque;
             this.ClientSize = new System.Drawing.Size(1661, 935);
-            this.Controls.Add(this.recipeDisplayBox);
             this.Controls.Add(this.searchButton);
             this.Controls.Add(this.prepTimeComboBox);
             this.Controls.Add(this.prepTimeLabel);
@@ -211,7 +200,6 @@
         private System.Windows.Forms.Label prepTimeLabel;
         private System.Windows.Forms.ComboBox prepTimeComboBox;
         private System.Windows.Forms.Button searchButton;
-        private System.Windows.Forms.TextBox recipeDisplayBox;
     }
 }
 

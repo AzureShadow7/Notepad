@@ -17,7 +17,6 @@ namespace RecipeFinder
         string connectionString = @"Data Source=NGOZIS-PC77;Initial Catalog=test;Integrated Security=True;Encrypt=False";
         SqlCommand command;
         SqlDataReader dataReader;
-        List<string> altCookingTimeList = new List<string>();
 
         public RecipeFinder()
         {
@@ -64,12 +63,21 @@ namespace RecipeFinder
 
                 while (dataReader.Read())
                 {
-                    string cookingTime = dataReader["prepTime"].ToString();
-                    prepTimeComboBox.Items.Add(cookingTime);
+                    string preppingTime = dataReader["prepTime"].ToString();
+                    prepTimeComboBox.Items.Add(preppingTime);
                 }
 
                 sqlConnection.Close();
             }
+        }
+
+        private void FillDataTable(string query, SqlConnection sqlConnection)
+        {
+            SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(query, sqlConnection);
+            DataTable dataTable1 = new DataTable();
+            sqlDataAdapter.Fill(dataTable1);
+
+            recipeDataGridView.DataSource = dataTable1;
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
@@ -86,14 +94,26 @@ namespace RecipeFinder
                     sqlConnection.Open();
                 }
 
-                string query = "SELECT mealId, mealName, mainIngredient, secondaryIngredient, vegetarian, prepTime, cookTime FROM dbo.mealTable where mainIngredient LIKE '"
-                    + textBox1.Text + "%'" + "and prepTime ='" + prepTimeComboBox.SelectedItem.ToString() + "' and cookTime ='" + cookingTimeComboBox.SelectedItem.ToString() + "'";
+                //string query = "SELECT mealId, mealName, mainIngredient, secondaryIngredient, vegetarian, prepTime, cookTime FROM dbo.mealTable where mainIngredient LIKE '"
+                //    + textBox1.Text + "%'" + "and prepTime ='" + prepTimeComboBox.SelectedItem.ToString() + "' and cookTime ='" + cookingTimeComboBox.SelectedItem.ToString() + "'";
 
-                SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(query, sqlConnection);
-                DataTable dataTable1 = new DataTable();
-                sqlDataAdapter.Fill(dataTable1);
+                if (vegetarianCheckBox.Checked)
+                {
+                    string query = "SELECT mealId, mealName, mainIngredient, secondaryIngredient, vegetarian, prepTime, cookTime FROM dbo.mealTable where mainIngredient LIKE '"
+                    + textBox1.Text + "%'" + "and prepTime ='" + prepTimeComboBox.SelectedItem.ToString() + "' and cookTime ='" + cookingTimeComboBox.SelectedItem.ToString()
+                    + "' and vegetarian = 1";
 
-                recipeDataGridView.DataSource = dataTable1;
+                    FillDataTable(query, sqlConnection);
+                    
+                }
+                else if (!vegetarianCheckBox.Checked)
+                {
+                    string query = "SELECT mealId, mealName, mainIngredient, secondaryIngredient, vegetarian, prepTime, cookTime FROM dbo.mealTable where mainIngredient LIKE '"
+                    + textBox1.Text + "%'" + "and prepTime ='" + prepTimeComboBox.SelectedItem.ToString() + "' and cookTime ='" + cookingTimeComboBox.SelectedItem.ToString()
+                    + "' and vegetarian = 0";
+
+                    FillDataTable(query, sqlConnection);
+                }
 
                 sqlConnection.Close();
             }
